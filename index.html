@@ -1,79 +1,237 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Two Column Layout</title>
+    <title>Find Your Smash Main</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <header>
-      <span class="site-title">STUDIO INDEX</span>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Archive</a>
-        <a href="#">Contact</a>
-      </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <h1 class="site-title">Find Your Smash Main</h1>
+        <p class="site-subtitle">A quick, beginner-friendly guide to choosing a Super Smash Bros. character.</p>
+
+        <nav class="nav">
+          <a href="#about">About</a>
+          <a href="#fighters">Fighters</a>
+          <a href="#table">Comparison</a>
+          <a href="#quiz">Main Finder</a>
+          <a href="https://www.ssbwiki.com/" target="_blank" rel="noreferrer">Smash Wiki</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <section>
-        <h1>Left Column</h1>
-        <p class="kicker">Notes, links, and updates.</p>
+    <main id="main">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <h2>Start simple. Pick a style. Get a main.</h2>
+            <p>
+              Super Smash Bros. is a fast party-fighting game where every character feels different. Some are easy and
+              balanced, while others are fast and technical or slow but powerful.
+            </p>
+            <p>
+              This page helps you choose a character based on the kind of gameplay you enjoy, then gives you a few
+              beginner tips so you can actually improve instead of randomly switching every match.
+            </p>
+            <p>
+              If you’re new, don’t worry about “the best character.” A character you understand will usually beat a
+              “top-tier” you don’t know how to play.
+            </p>
 
-        <p>
-          According to several very confident insects, flight is impossible.
-          Then they do it anyway. Sometimes rules exist for safety.
-          Sometimes they exist to be ignored.
-        </p>
+            <div class="hero-actions">
+              <button id="toggleTips" type="button" class="btn">
+                Show beginner tips
+              </button>
+              <button id="randomPick" type="button" class="btn btn-secondary">
+                Pick a random fighter
+              </button>
+              <p class="random-output" id="randomOutput" aria-live="polite"></p>
+            </div>
+          </div>
 
-        <p>
-          Yellow. Black. Yellow. Black. The rhythm of the day settles in.
-          Breakfast happens quickly. Someone is late. Someone is dramatic about it.
-        </p>
-
-        <p>
-          Keep your hands and antennas inside the layout at all times.
-          Spacing matters. White space is not empty space.
-        </p>
-
-        <h2>Recent</h2>
-        <ul>
-          <li>Built a two-column Flexbox layout.</li>
-          <li>Main content expands while sidebar stays narrow.</li>
-          <li>Layout stacks cleanly on mobile.</li>
-        </ul>
+          <figure class="hero-figure">
+            <img
+              src="images/mario.jpg"
+              alt="Mario from Super Smash Bros. smiling and ready to fight"
+              class="hero-img"
+            />
+            <figcaption>Example fighter image (replace with any Smash image you want).</figcaption>
+          </figure>
+        </div>
       </section>
 
-      <aside>
-        <h1>Right Column</h1>
-        <p class="kicker">Sidebar</p>
+      <section id="about" class="section">
+        <div class="container">
+          <h2>How people usually choose a main</h2>
+          <ul class="card-list">
+            <li class="card">
+              <h3>Balanced</h3>
+              <p>Good all-around tools. Great for learning the basics without feeling stuck.</p>
+              <a href="#fighters">See balanced fighters</a>
+            </li>
+            <li class="card">
+              <h3>Fast / Aggressive</h3>
+              <p>Quick movement and pressure. You trade simplicity for speed and combos.</p>
+              <a href="#fighters">See fast fighters</a>
+            </li>
+            <li class="card">
+              <h3>Heavy / Powerful</h3>
+              <p>Big hits and survivability. Slower, but you can win with a few good reads.</p>
+              <a href="#fighters">See heavy fighters</a>
+            </li>
+          </ul>
 
-        <p>
-          This space is for secondary information: links, reminders,
-          or anything that supports the main content without competing with it.
-        </p>
-
-        <div class="card">
-          <h2>Quick Links</h2>
-          <p><a href="#">Home Base</a></p>
-          <p><a href="#">Daily Notes</a></p>
-          <p><a href="#">Resources</a></p>
+          <div class="tips-box" id="tipsBox" hidden>
+            <h3>Beginner tips (toggle)</h3>
+            <ol>
+              <li>Pick one character and stick with them for a week.</li>
+              <li>Learn your main’s recovery options so you don’t lose stocks for free.</li>
+              <li>Focus on spacing and staying calm instead of mashing.</li>
+            </ol>
+          </div>
         </div>
+      </section>
 
-        <div class="card">
-          <h2>Status</h2>
-          <p>
-            Currently focused on layout, spacing, and keeping things readable.
-            If something breaks, refresh and try again.
+      <section id="fighters" class="section">
+        <div class="container">
+          <h2>Starter fighters by playstyle</h2>
+          <p class="muted">
+            These examples are intentionally simple. You can replace any characters here with your favorites.
+          </p>
+
+          <div class="fighters-grid">
+            <article class="fighter">
+              <h3>Mario (Balanced)</h3>
+              <p>Easy to pick up, solid tools, and teaches fundamentals like spacing and confirms.</p>
+              <a href="https://www.ssbwiki.com/Mario_(SSBU)" target="_blank" rel="noreferrer">Learn more</a>
+            </article>
+
+            <article class="fighter">
+              <h3>Kirby (Simple / Beginner)</h3>
+              <p>Great for learning movement, jumps, and basic combos without complicated inputs.</p>
+              <a href="https://www.ssbwiki.com/Kirby_(SSBU)" target="_blank" rel="noreferrer">Learn more</a>
+            </article>
+
+            <article class="fighter">
+              <h3>Fox (Fast / Aggressive)</h3>
+              <p>Very quick. Rewards practice and pressure, but can feel fragile if you make mistakes.</p>
+              <a href="https://www.ssbwiki.com/Fox_(SSBU)" target="_blank" rel="noreferrer">Learn more</a>
+            </article>
+
+            <article class="fighter">
+              <h3>Bowser (Heavy / Powerful)</h3>
+              <p>Hits hard and lives long. Slower movement, but you can win with strong reads.</p>
+              <a href="https://www.ssbwiki.com/Bowser_(SSBU)" target="_blank" rel="noreferrer">Learn more</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="table" class="section">
+        <div class="container">
+          <h2>Quick comparison table</h2>
+
+          <div class="table-wrap">
+            <table>
+              <caption>Example character comparison (edit freely)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Character</th>
+                  <th scope="col">Difficulty</th>
+                  <th scope="col">Playstyle</th>
+                  <th scope="col">Why pick them?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Mario</th>
+                  <td>Easy</td>
+                  <td>Balanced</td>
+                  <td>Great fundamentals and consistency</td>
+                </tr>
+                <tr>
+                  <th scope="row">Kirby</th>
+                  <td>Easy</td>
+                  <td>Simple</td>
+                  <td>Beginner-friendly movement and options</td>
+                </tr>
+                <tr>
+                  <th scope="row">Fox</th>
+                  <td>Hard</td>
+                  <td>Fast</td>
+                  <td>Speed + pressure if you like aggressive play</td>
+                </tr>
+                <tr>
+                  <th scope="row">Bowser</th>
+                  <td>Medium</td>
+                  <td>Heavy</td>
+                  <td>Big damage and survivability</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz" class="section">
+        <div class="container">
+          <h2>Main Finder form</h2>
+          <p class="muted">Fill this out and the page will suggest a starter character.</p>
+
+          <form id="mainForm" class="form">
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Alex" required />
+            </div>
+
+            <div class="form-row">
+              <label for="playstyle">Playstyle</label>
+              <select id="playstyle" name="playstyle" required>
+                <option value="" selected disabled>Choose one…</option>
+                <option value="balanced">Balanced / all-around</option>
+                <option value="fast">Fast / aggressive</option>
+                <option value="heavy">Heavy / powerful</option>
+                <option value="simple">Simple / beginner</option>
+              </select>
+            </div>
+
+            <fieldset class="form-row">
+              <legend>Experience</legend>
+              <label><input type="radio" name="exp" value="new" required /> New</label>
+              <label><input type="radio" name="exp" value="some" /> Some</label>
+              <label><input type="radio" name="exp" value="a_lot" /> A lot</label>
+            </fieldset>
+
+            <div class="form-row">
+              <label for="notes">What do you want to improve?</label>
+              <textarea id="notes" name="notes" rows="4" placeholder="Recovering, combos, neutral, etc."></textarea>
+            </div>
+
+            <button class="btn" type="submit">Suggest my main</button>
+          </form>
+
+          <div class="result" id="result" aria-live="polite"></div>
+
+          <p class="back-top">
+            <a href="#top">Back to top</a>
           </p>
         </div>
-      </aside>
+      </section>
     </main>
 
-    <footer>
-      <p>© 2026 · HTML + CSS · Flexbox Practice</p>
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          Made for CSE 2004 Website #1. External references: <a href="https://www.ssbwiki.com/" target="_blank" rel="noreferrer">SmashWiki</a>.
+        </p>
+      </div>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
