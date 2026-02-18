@@ -1,237 +1,257 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Find Your Smash Main</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSBU 101 - Archetypes - Gameplan</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-
-    <header class="site-header" id="top">
-      <div class="container header-inner">
-        <h1 class="site-title">Find Your Smash Main</h1>
-        <p class="site-subtitle">A quick, beginner-friendly guide to choosing a Super Smash Bros. character.</p>
-
-        <nav class="nav">
-          <a href="#about">About</a>
-          <a href="#fighters">Fighters</a>
-          <a href="#table">Comparison</a>
-          <a href="#quiz">Main Finder</a>
-          <a href="https://www.ssbwiki.com/" target="_blank" rel="noreferrer">Smash Wiki</a>
-        </nav>
+  <header class="site-header">
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div class="brand-text">
+          <span class="brand-title">Super Smash Bros Ultimate 101</span>
+          <span class="brand-subtitle">Archetypes - Guide - Resources</span>
+        </div>
       </div>
-    </header>
 
-    <main id="main">
-      <section class="hero">
-        <div class="container hero-inner">
-          <div>
-            <h2>Start simple. Pick a style. Get a main.</h2>
-            <p>
-              Super Smash Bros. is a fast party-fighting game where every character feels different. Some are easy and
-              balanced, while others are fast and technical or slow but powerful.
-            </p>
-            <p>
-              This page helps you choose a character based on the kind of gameplay you enjoy, then gives you a few
-              beginner tips so you can actually improve instead of randomly switching every match.
-            </p>
-            <p>
-              If you’re new, don’t worry about “the best character.” A character you understand will usually beat a
-              “top-tier” you don’t know how to play.
-            </p>
+      <nav class="nav" aria-label="Primary">
+        <a href="#archetypes">Archetypes</a>
+        <a href="#how-to-play">How to Play</a>
+        <a href="#matchup">Matchup Plan</a>
+        <a href="#resources">Resources</a>
+      </nav>
+    </div>
 
-            <div class="hero-actions">
-              <button id="toggleTips" type="button" class="btn">
-                Show beginner tips
-              </button>
-              <button id="randomPick" type="button" class="btn btn-secondary">
-                Pick a random fighter
-              </button>
-              <p class="random-output" id="randomOutput" aria-live="polite"></p>
-            </div>
-          </div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <img src="images/image7.jpg" alt="" class="hero-img" loading="eager" />
+        <div class="hero-overlay"></div>
+      </div>
 
-          <figure class="hero-figure">
-            <img
-              src="images/mario.jpg"
-              alt="Mario from Super Smash Bros. smiling and ready to fight"
-              class="hero-img"
-            />
-            <figcaption>Example fighter image (replace with any Smash image you want).</figcaption>
-          </figure>
+      <div class="hero-content">
+        <h1 id="hero-title">Learn Super Smash Bros beyond basic guides</h1>
+        <p class="hero-lede">
+          Instead of "pick these 4 characters," this page teaches you the <strong>roles</strong>
+          characters play in <strong>Super Smash Bros. Ultimate</strong>, so you can recognize a gameplan,
+          build counterplay, and stop feeling lost in neutral.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn primary" href="#archetypes">Start with archetypes</a>
+          <a class="btn ghost" href="#matchup">Build a matchup plan</a>
         </div>
-      </section>
 
-      <section id="about" class="section">
-        <div class="container">
-          <h2>How people usually choose a main</h2>
-          <ul class="card-list">
-            <li class="card">
-              <h3>Balanced</h3>
-              <p>Good all-around tools. Great for learning the basics without feeling stuck.</p>
-              <a href="#fighters">See balanced fighters</a>
-            </li>
-            <li class="card">
-              <h3>Fast / Aggressive</h3>
-              <p>Quick movement and pressure. You trade simplicity for speed and combos.</p>
-              <a href="#fighters">See fast fighters</a>
-            </li>
-            <li class="card">
-              <h3>Heavy / Powerful</h3>
-              <p>Big hits and survivability. Slower, but you can win with a few good reads.</p>
-              <a href="#fighters">See heavy fighters</a>
-            </li>
-          </ul>
-
-          <div class="tips-box" id="tipsBox" hidden>
-            <h3>Beginner tips (toggle)</h3>
-            <ol>
-              <li>Pick one character and stick with them for a week.</li>
-              <li>Learn your main’s recovery options so you don’t lose stocks for free.</li>
-              <li>Focus on spacing and staying calm instead of mashing.</li>
-            </ol>
-          </div>
+        <div class="hero-badges" aria-label="Key topics">
+          <span class="badge">Neutral</span>
+          <span class="badge">Advantage</span>
+          <span class="badge">Disadvantage</span>
+          <span class="badge">Stage Control</span>
         </div>
-      </section>
+      </div>
+    </section>
+  </header>
 
-      <section id="fighters" class="section">
-        <div class="container">
-          <h2>Starter fighters by playstyle</h2>
-          <p class="muted">
-            These examples are intentionally simple. You can replace any characters here with your favorites.
-          </p>
-
-          <div class="fighters-grid">
-            <article class="fighter">
-              <h3>Mario (Balanced)</h3>
-              <p>Easy to pick up, solid tools, and teaches fundamentals like spacing and confirms.</p>
-              <a href="https://www.ssbwiki.com/Mario_(SSBU)" target="_blank" rel="noreferrer">Learn more</a>
-            </article>
-
-            <article class="fighter">
-              <h3>Kirby (Simple / Beginner)</h3>
-              <p>Great for learning movement, jumps, and basic combos without complicated inputs.</p>
-              <a href="https://www.ssbwiki.com/Kirby_(SSBU)" target="_blank" rel="noreferrer">Learn more</a>
-            </article>
-
-            <article class="fighter">
-              <h3>Fox (Fast / Aggressive)</h3>
-              <p>Very quick. Rewards practice and pressure, but can feel fragile if you make mistakes.</p>
-              <a href="https://www.ssbwiki.com/Fox_(SSBU)" target="_blank" rel="noreferrer">Learn more</a>
-            </article>
-
-            <article class="fighter">
-              <h3>Bowser (Heavy / Powerful)</h3>
-              <p>Hits hard and lives long. Slower movement, but you can win with strong reads.</p>
-              <a href="https://www.ssbwiki.com/Bowser_(SSBU)" target="_blank" rel="noreferrer">Learn more</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="table" class="section">
-        <div class="container">
-          <h2>Quick comparison table</h2>
-
-          <div class="table-wrap">
-            <table>
-              <caption>Example character comparison (edit freely)</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Character</th>
-                  <th scope="col">Difficulty</th>
-                  <th scope="col">Playstyle</th>
-                  <th scope="col">Why pick them?</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Mario</th>
-                  <td>Easy</td>
-                  <td>Balanced</td>
-                  <td>Great fundamentals and consistency</td>
-                </tr>
-                <tr>
-                  <th scope="row">Kirby</th>
-                  <td>Easy</td>
-                  <td>Simple</td>
-                  <td>Beginner-friendly movement and options</td>
-                </tr>
-                <tr>
-                  <th scope="row">Fox</th>
-                  <td>Hard</td>
-                  <td>Fast</td>
-                  <td>Speed + pressure if you like aggressive play</td>
-                </tr>
-                <tr>
-                  <th scope="row">Bowser</th>
-                  <td>Medium</td>
-                  <td>Heavy</td>
-                  <td>Big damage and survivability</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section id="quiz" class="section">
-        <div class="container">
-          <h2>Main Finder form</h2>
-          <p class="muted">Fill this out and the page will suggest a starter character.</p>
-
-          <form id="mainForm" class="form">
-            <div class="form-row">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Alex" required />
-            </div>
-
-            <div class="form-row">
-              <label for="playstyle">Playstyle</label>
-              <select id="playstyle" name="playstyle" required>
-                <option value="" selected disabled>Choose one…</option>
-                <option value="balanced">Balanced / all-around</option>
-                <option value="fast">Fast / aggressive</option>
-                <option value="heavy">Heavy / powerful</option>
-                <option value="simple">Simple / beginner</option>
-              </select>
-            </div>
-
-            <fieldset class="form-row">
-              <legend>Experience</legend>
-              <label><input type="radio" name="exp" value="new" required /> New</label>
-              <label><input type="radio" name="exp" value="some" /> Some</label>
-              <label><input type="radio" name="exp" value="a_lot" /> A lot</label>
-            </fieldset>
-
-            <div class="form-row">
-              <label for="notes">What do you want to improve?</label>
-              <textarea id="notes" name="notes" rows="4" placeholder="Recovering, combos, neutral, etc."></textarea>
-            </div>
-
-            <button class="btn" type="submit">Suggest my main</button>
-          </form>
-
-          <div class="result" id="result" aria-live="polite"></div>
-
-          <p class="back-top">
-            <a href="#top">Back to top</a>
-          </p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <p>
-          Made for CSE 2004 Website #1. External references: <a href="https://www.ssbwiki.com/" target="_blank" rel="noreferrer">SmashWiki</a>.
+  <main id="main" class="container">
+    <section class="section" id="archetypes" aria-labelledby="arch-title">
+      <div class="section-head">
+        <h2 id="arch-title">Character Archetypes</h2>
+        <p class="muted">
+          In Super Smash Bros Ultimate, archetypes are a shorthand for <strong>how a character wants to win neutral</strong>
+          and what they want in advantage. Real characters can blend styles, but these labels help you predict habits fast.
         </p>
       </div>
-    </footer>
 
-    <script src="script.js"></script>
-  </body>
+      <div class="grid cards">
+        <article class="card">
+          <div class="card-media"><img src="images/rushdown.jpg" alt="Rushdown archetype artwork" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Rushdown</h3>
+            <p>
+              Wants to <strong>stay close</strong>, overwhelm shields, and convert small openings into strings.
+              In Ultimate, rushdown often lives off <strong>safe aerials</strong>, dash dancing, and fast burst options.
+            </p>
+            <ul>
+              <li>Win condition: repeatable close-range pressure</li>
+              <li>Watch for: whiff punishes when they over-swing</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media"><img src="images/zoner.jpg" alt="Zoner archetype artwork" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Zoner</h3>
+            <p>
+              Wants to <strong>own space</strong> and force bad approaches. In SSBU, zoning is not "camping."
+              It is controlling lanes, forcing jumps, and punishing the route you choose.
+            </p>
+            <ul>
+              <li>Win condition: build percent while staying hard to touch</li>
+              <li>Watch for: when you finally get in, do not overcommit</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media"><img src="images/hitandrun.jpg" alt="Hit-and-run archetype artwork" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Hit-and-Run</h3>
+            <p>
+              Wants quick pokes, then disengage. In Ultimate this often means <strong>burst movement</strong>,
+              safe aerial drift, and whiff punishing rather than extended scraps.
+            </p>
+            <ul>
+              <li>Win condition: chip + frustrate + punish impatience</li>
+              <li>Watch for: cornering them; removes their "leave" button</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media"><img src="images/trapper.jpg" alt="Trapper archetype artwork" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Trapper</h3>
+            <p>
+              Wants to create a "no-go zone" with setups. In SSBU, trappers are deadly at
+              <strong>ledge</strong> and <strong>platform</strong> coverage.
+            </p>
+            <ul>
+              <li>Win condition: you walk into an option they already covered</li>
+              <li>Watch for: when they need time, do not give it for free</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="table-wrap" role="region" aria-label="Archetype cheat sheet" tabindex="0">
+        <table>
+          <caption>Quick archetype cheat sheet (what to expect in SSBU)</caption>
+          <thead>
+            <tr>
+              <th>Archetype</th>
+              <th>What they want</th>
+              <th>What you should do</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Rushdown</td><td>Close pressure, scramble wins</td><td>Hold space, whiff punish, do not panic shield</td></tr>
+            <tr><td>Zoner</td><td>Control lanes + force jumps</td><td>Take stage, approach with patience, mix timing</td></tr>
+            <tr><td>Hit-and-Run</td><td>Poke + reset distance</td><td>Corner them, cover landings, stay disciplined</td></tr>
+            <tr><td>Trapper</td><td>Setups + conditional coverage</td><td>Disrupt setup time, track patterns at ledge</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="small muted">Note: characters can blend styles in Ultimate. Think of this as "what they default to" when things are even.</p>
+    </section>
+
+    <section class="section" id="how-to-play" aria-labelledby="play-title">
+      <div class="split">
+        <div>
+          <h2 id="play-title">How to Smash (the SSBU loop)</h2>
+          <p>
+            If you only remember one thing: Ultimate is a loop of <strong>Neutral -> Advantage -> Ledge/Edge</strong>.
+            Your job is to recognize which phase you are in and pick the right risk level.
+          </p>
+          <ol>
+            <li><strong>Neutral:</strong> win space without guessing wrong for free.</li>
+            <li><strong>Advantage:</strong> extend safely - do not give reversals.</li>
+            <li><strong>Disadvantage:</strong> land and reset - avoid predictable drift.</li>
+            <li><strong>Ledge/Edge:</strong> the "stock-taking" part of the game.</li>
+          </ol>
+        </div>
+
+        <aside class="panel">
+          <h3>Mini checklist</h3>
+          <ul class="checklist">
+            <li>Where is center stage?</li>
+            <li>Who has the tempo right now?</li>
+            <li>What option beats my habit?</li>
+            <li>What is my safest reset?</li>
+          </ul>
+          <p class="muted small">These questions matter more than "what is the best character."</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="matchup" aria-labelledby="matchup-title">
+      <div class="section-head">
+        <h2 id="matchup-title">Matchup Planner (quick form)</h2>
+        <p class="muted">This is a simple way to turn "I hate playing against this character" into an actual plan.</p>
+        <p class="muted small">I use this to track notes after local sets (mostly Cloud vs Samus / Snake / Aegis).</p>
+      </div>
+
+      <form id="matchupForm" class="form" action="#">
+        <div class="form-row">
+          <label for="yourChar">Your character</label>
+          <input id="yourChar" name="yourChar" type="text" placeholder="e.g., Cloud" />
+        </div>
+        <div class="form-row">
+          <label for="theirChar">Opponent character</label>
+          <input id="theirChar" name="theirChar" type="text" placeholder="e.g., Samus" />
+        </div>
+        <div class="form-row">
+          <label for="theirStyle">Opponent style you feel</label>
+          <select id="theirStyle" name="theirStyle">
+            <option value="">Choose one</option>
+            <option value="rushdown">Rushdown</option>
+            <option value="zoner">Zoner</option>
+            <option value="hitrun">Hit-and-Run</option>
+            <option value="trapper">Trapper</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="plan">Your plan (1-2 sentences)</label>
+          <textarea id="plan" name="plan" rows="4" placeholder="Example: I will take center, approach by walking + shielding projectiles, and punish landings instead of swinging first."></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn primary" type="submit">Save plan</button>
+          <button class="btn ghost" type="reset">Reset</button>
+        </div>
+      </form>
+
+      <div class="saved-plans-wrapper">
+        <h3>Saved Plans</h3>
+        <p id="planStatus" class="muted small" role="status" aria-live="polite"></p>
+        <div id="savedPlans"></div>
+      </div>
+    </section>
+
+    <section class="section" id="resources" aria-labelledby="res-title">
+      <h2 id="res-title">Resources</h2>
+      <p class="muted">Use these as "next steps" after you understand archetypes.</p>
+      <div class="resource-grid">
+        <a class="resource" href="https://www.smashbros.com/" target="_blank" rel="noreferrer">
+          Official SSBU site
+          <span class="resource-note">Roster, videos, official info</span>
+        </a>
+        <a class="resource" href="https://www.ssbwiki.com/" target="_blank" rel="noreferrer">
+          SmashWiki
+          <span class="resource-note">Move data and character pages</span>
+        </a>
+        <a class="resource" href="https://www.start.gg/" target="_blank" rel="noreferrer">
+          start.gg
+          <span class="resource-note">Tournaments + brackets</span>
+        </a>
+      </div>
+      <div class="banner"><img src="images/superwide.png" alt="Super Smash Bros Ultimate banner" loading="lazy" /></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>
+        Built as a learning page for <strong>Super Smash Bros. Ultimate</strong>.
+        Notes are based on my weekly local bracket prep.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>

@@ -1,56 +1,142 @@
-const toggleTipsBtn = document.querySelector('#toggleTips');
-const tipsBox = document.querySelector('#tipsBox');
+const matchupForm = document.querySelector(".form");
+const savedPlansContainer = document.querySelector("#savedPlans");
+const planStatus = document.querySelector("#planStatus");
 
-const randomPickBtn = document.querySelector('#randomPick');
-const randomOutput = document.querySelector('#randomOutput');
+const storageKey = "savedMatchupPlans";
 
-const form = document.querySelector('#mainForm');
-const result = document.querySelector('#result');
+const yourCharInput = document.querySelector("#yourChar");
+const theirCharInput = document.querySelector("#theirChar");
+const styleSelect = document.querySelector("#theirStyle");
+const planTextarea = document.querySelector("#plan");
 
-const fighters = [
-  { name: 'Mario', style: 'balanced' },
-  { name: 'Kirby', style: 'simple' },
-  { name: 'Fox', style: 'fast' },
-  { name: 'Bowser', style: 'heavy' },
-];
+let savedPlans = [];
 
-function sample(array) {
-  const i = Math.floor(Math.random() * array.length);
-  return array[i];
+// I used concepts from past JavaScript courses here: sessionStorage for client-side persistence and event delegation for delete actions.
+function setStatus(message, type = "info") {
+  if (!planStatus) return;
+  planStatus.textContent = message;
+  planStatus.dataset.type = type;
 }
 
-// Interactive behavior #1: show/hide tips (not alert)
-toggleTipsBtn.addEventListener('click', () => {
-  const isHidden = tipsBox.hasAttribute('hidden');
+function persistPlans() {
+  sessionStorage.setItem(storageKey, JSON.stringify(savedPlans));
+}
 
-  if (isHidden) {
-    tipsBox.removeAttribute('hidden');
-    toggleTipsBtn.textContent = 'Hide beginner tips';
-  } else {
-    tipsBox.setAttribute('hidden', '');
-    toggleTipsBtn.textContent = 'Show beginner tips';
+function restorePlans() {
+  const raw = sessionStorage.getItem(storageKey);
+  if (!raw) return;
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return;
+
+    savedPlans = parsed
+      .filter((entry) => entry && typeof entry === "object")
+      .map((entry) => ({
+        yourChar: String(entry.yourChar || "").trim(),
+        theirChar: String(entry.theirChar || "").trim(),
+        theirStyle: String(entry.theirStyle || "").trim(),
+        planText: String(entry.planText || "").trim(),
+        updatedAt: Number(entry.updatedAt || Date.now()),
+      }))
+      .filter((entry) => entry.yourChar && entry.theirChar && entry.planText)
+      .sort((a, b) => b.updatedAt - a.updatedAt);
+  } catch {
+    savedPlans = [];
   }
-});
+}
 
-// Interactive behavior #2: random fighter pick
-randomPickBtn.addEventListener('click', () => {
-  const pick = sample(fighters);
-  randomOutput.textContent = `Random pick: ${pick.name}`;
-});
+function styleLabel(value) {
+  if (!value) return "Unknown style";
+  if (value === "hitrun") return "Hit-and-Run";
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
 
-// Interactive behavior #3: form-driven suggestion
-form.addEventListener('submit', (event) => {
+function renderSavedPlans() {
+  savedPlansContainer.innerHTML = "";
+
+  if (savedPlans.length === 0) {
+    savedPlansContainer.innerHTML = '<p class="muted">No saved plans yet.</p>';
+    return;
+  }
+
+  savedPlans.forEach((plan, index) => {
+    const card = document.createElement("div");
+    card.className = "saved-plan";
+
+    card.innerHTML = `
+      <strong>${plan.yourChar} vs ${plan.theirChar}</strong>
+      <span class="plan-style">${styleLabel(plan.theirStyle)}</span>
+      <p>${plan.planText}</p>
+      <button class="delete-btn" data-index="${index}" type="button">Delete</button>
+    `;
+
+    savedPlansContainer.appendChild(card);
+  });
+}
+
+function validateForm(yourChar, theirChar, planText) {
+  if (!yourChar || !theirChar || !planText) {
+    return "Please fill out your character, their character, and your plan.";
+  }
+  if (planText.length < 12) {
+    return "Plan is too short. Give at least one concrete sentence.";
+  }
+  return "";
+}
+
+function findExistingPlanIndex(yourChar, theirChar, theirStyle) {
+  return savedPlans.findIndex((plan) => {
+    return (
+      plan.yourChar.toLowerCase() === yourChar.toLowerCase() &&
+      plan.theirChar.toLowerCase() === theirChar.toLowerCase() &&
+      plan.theirStyle === theirStyle
+    );
+  });
+}
+
+matchupForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#name').value.trim();
-  const playstyle = document.querySelector('#playstyle').value;
+  const yourChar = yourCharInput.value.trim();
+  const theirChar = theirCharInput.value.trim();
+  const theirStyle = styleSelect.value;
+  const planText = planTextarea.value.trim();
 
-  const match = fighters.find((f) => f.style === playstyle) ?? fighters[0];
+  const validationError = validateForm(yourChar, theirChar, planText);
+  if (validationError) {
+    setStatus(validationError, "error");
+    return;
+  }
 
-  result.style.display = 'block';
-  result.innerHTML = `
-    <h3>Suggested main for ${name || 'you'}: ${match.name}</h3>
-    <p>You selected <strong>${playstyle}</strong>, so ${match.name} is a great starter choice.</p>
-    <p>Tip: Play 10 matches focusing on one thing (recovery, spacing, or staying calm) and you’ll improve fast.</p>
-  `;
+  const nextPlan = { yourChar, theirChar, theirStyle, planText, updatedAt: Date.now() };
+  const existingIndex = findExistingPlanIndex(yourChar, theirChar, theirStyle);
+
+  if (existingIndex >= 0) {
+    savedPlans[existingIndex] = nextPlan;
+    setStatus("Updated existing matchup plan.", "success");
+  } else {
+    savedPlans.push(nextPlan);
+    setStatus("Saved new matchup plan.", "success");
+  }
+
+  savedPlans.sort((a, b) => b.updatedAt - a.updatedAt);
+  persistPlans();
+  matchupForm.reset();
+  renderSavedPlans();
 });
+
+savedPlansContainer.addEventListener("click", (event) => {
+  if (!event.target.classList.contains("delete-btn")) return;
+
+  const index = Number(event.target.dataset.index);
+  if (Number.isNaN(index)) return;
+
+  savedPlans.splice(index, 1);
+  persistPlans();
+  renderSavedPlans();
+  setStatus("Deleted plan.", "info");
+});
+
+restorePlans();
+renderSavedPlans();
